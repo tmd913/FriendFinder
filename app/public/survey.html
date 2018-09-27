@@ -225,21 +225,17 @@
         $("#submit").on("click", function (event) {
             event.preventDefault();
 
+            let isValid = true;
+
             // check that all fields are filled out
-            function validateFields() {
-                let isValid = true;
-
-                $(".form-control").each(function () {
-                    if ($(this).val() === "") {
-                        isValid = false;
-                    }
-                });
-
-                return isValid;
-            }
+            $(".form-control").each(function () {
+                if ($(this).val() === "") {
+                    isValid = false;
+                }
+            });
 
             // continues if all fields filled out
-            if (validateFields()) {
+            if (isValid) {
                 console.log("valid");
                 const user = {
                     name: $("#name").val(),
